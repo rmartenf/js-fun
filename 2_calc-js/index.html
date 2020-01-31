@@ -5,15 +5,22 @@
             
             document.addEventListener('DOMContentLoaded', function(event) {
   
+                let display = document.getElementById('display')
+                
                 var ops = []
                 var buffer = []
 
-                function addToBuffer(n){
-                    console.log('before', buffer)
-                    buffer.push(n)
-                    console.log('after', buffer)
+                function addToBuffer(n){                
+                    buffer.push(n)          
+                    console.log(buffer)  
+                    updateDisplay(buffer.join(''))
                 }
             
+                function updateDisplay(v){
+                    console.log('here')
+                    display.innerHTML = `&nbsp;${v}&nbsp;`
+                }
+
                 function bindNumberButtons(){
                     let nums = document.getElementsByClassName('num')
                     for (let i = 0; i < nums.length; i++) {
@@ -33,20 +40,22 @@
                         })        
                     }        
                 }
-
+                bindNumberButtons()
+                bindOpsButtons()
 
             })
     
         </script>
         <style>
             #outer {
-                border: 1px solid red;
+                border: 1px solid;
                 margin: auto;
+                padding: 10px;
                 width: 200px;
             }
             .row {
-                border: 1px solid green;
                 display: flex;
+                padding: 1px;
             }
             .spcr{
                 width: 25%;
@@ -55,7 +64,7 @@
             .btn {             
                 width: 25%;
                 margin: 2px;
-                border: 1px solid green;
+                border: 1px solid #ccc;
                 border-radius: 6px;
                 text-align: center;
                 font-size: 1.2em; 
@@ -69,7 +78,7 @@
             }
 
             #screen {
-                border: 1px solid pink;
+                border: 1px solid #ccc;
                 font-size: 1.4em;
                 width: 100%;
                 padding:10px;
@@ -80,7 +89,7 @@
         
         <div id="outer">
             <div class="row">    
-                <div id="screen">&nbsp;</div>
+                <div id="display">&nbsp;</div>
             </div>
             <div class="row">            
                 <div class="spcr">&nbsp;</div>
