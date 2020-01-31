@@ -1,0 +1,118 @@
+<html>
+    <head>
+        <title>JS Fun</title>
+        <script>
+            
+            document.addEventListener('DOMContentLoaded', function(event) {
+  
+                var ops = []
+                var buffer = []
+
+                function addToBuffer(n){
+                    console.log('before', buffer)
+                    buffer.push(n)
+                    console.log('after', buffer)
+                }
+            
+                function bindNumberButtons(){
+                    let nums = document.getElementsByClassName('num')
+                    for (let i = 0; i < nums.length; i++) {
+                        const e = nums[i]
+                        e.addEventListener('click', function(e){
+                            addToBuffer(e.toElement.innerHTML)
+                        })        
+                    }        
+                }
+ 
+                function bindOpsButtons(){
+                    let nums = document.getElementsByClassName('op')
+                    for (let i = 0; i < nums.length; i++) {
+                        const e = nums[i]
+                        e.addEventListener('click', function(e){
+                            addToBuffer(e.toElement.innerHTML)
+                        })        
+                    }        
+                }
+
+
+            })
+    
+        </script>
+        <style>
+            #outer {
+                border: 1px solid red;
+                margin: auto;
+                width: 200px;
+            }
+            .row {
+                border: 1px solid green;
+                display: flex;
+            }
+            .spcr{
+                width: 25%;
+                margin: 2px;
+            }
+            .btn {             
+                width: 25%;
+                margin: 2px;
+                border: 1px solid green;
+                border-radius: 6px;
+                text-align: center;
+                font-size: 1.2em; 
+                cursor: pointer;               
+            }
+            .btn:hover {
+                background: #ccc;
+            }
+            .btn:active {
+                background: #999;
+            }
+
+            #screen {
+                border: 1px solid pink;
+                font-size: 1.4em;
+                width: 100%;
+                padding:10px;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <div id="outer">
+            <div class="row">    
+                <div id="screen">&nbsp;</div>
+            </div>
+            <div class="row">            
+                <div class="spcr">&nbsp;</div>
+                <div class="spcr">&nbsp;</div>
+                <div class="spcr">&nbsp;</div>
+                <div class="btn op" id="btn_/">/</div>
+            </div>
+            <div class="row">            
+                <div class="btn num">7</div>
+                <div class="btn num">8</div>
+                <div class="btn num">9</div>
+                <div class="btn op">x</div>
+            </div>
+            <div class="row">
+                <div class="btn num">4</div>        
+                <div class="btn num">5</div>
+                <div class="btn num">6</div>
+                <div class="btn op">-</div>
+            </div>
+            <div class="row">
+
+                <div class="btn num">1</div>            
+                <div class="btn num">2</div>
+                <div class="btn num">3</div>
+                <div class="btn op">+</div>
+            </div>
+            <div class="row">            
+                <div class="btn num" style="width:50%">0</div>
+                <div class="btn num">.</div>
+                <div class="btn op">=</div>
+            </div>
+        </div>
+        
+    </body>
+</html>
